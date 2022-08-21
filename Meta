@@ -1,0 +1,19 @@
+[bpan]
+name = test-more-bash
+version = 0.1.0
+abstract = TAP Testing for Bash
+license = MIT
+copyright = 2013-2022
+
+site = $repo
+repo = git@github.com:bpan-org/test-more-bash
+bug = $repo/issues/
+irc = irc.libera.chat/bpan
+
+[author]
+name = Ingy döt Net
+email = ingy@ingy.net
+github = ingydotnet
+libera = ingy
+twitter = ingydotnet
+site = https://github.com/ingydotnet
