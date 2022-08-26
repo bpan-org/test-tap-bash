@@ -2,8 +2,7 @@
 
 # shellcheck disable=2034
 
-source test/setup
-use Test::More
+source test/init
 
 fail 'fail with label'
 

@@ -13,7 +13,7 @@ source bpan.bash --prelude
 
 bpan:use test-more
 
-plan tests 8
+plan 8
 
 some-command
 ok $? 'some-command is ok'
@@ -51,15 +51,16 @@ Prove knows it's Bash from the first line (the hashbang), and it just works.
 
 ## Description
 
-Test::More is the tried and true testing library for Perl. It uses TAP (the
-Test Anything Protocol). This is the same thing for Bash.  For the most part it
-should work exactly the same.
+Test::More is the tried and true testing library for Perl.
+It uses TAP (the Test Anything Protocol).
+This is the same thing for Bash.
+For the most part it should work exactly the same.
 
 ## Methods
 
 This is the basic usage:
 
-* `plan tests $count`
+* `plan $count`
 * `ok $status_code "$label"`
 * `pass "$label"`
 * `fail "$label"`

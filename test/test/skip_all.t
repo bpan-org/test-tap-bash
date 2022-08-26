@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-source test/setup
-use Test::More
+source test/init
 
-plan skip_all 'Skipping this test to demo skip_all'
+plan skip-all 'Skipping this test to demo skip_all'
 
 fail "Don't run this code"
 
-done_testing
+done-testing

@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-source test/setup
-
-use Test::More
+source test/init
 
 output=$(prove -v test/test/fail1.t 2>&1) || true
 
@@ -31,4 +29,4 @@ like "$output" "-line2.*\+foo" \
   'array comparison (diff)'
 
 
-done_testing 11
+done-testing 11

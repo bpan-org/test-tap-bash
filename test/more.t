@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
 
-# shellcheck disable=2034
+source test/init
 
-source test/setup
-use Test::More
-
-plan tests 6
+plan 6
 
 pass 'This test always passes'
 
@@ -24,5 +21,5 @@ note "A msg for stdout"
 
 expected=(line1 line2)
 
-command_output=(line1 line2 )
+command_output=(line1 line2)
 cmp-array command_output expected "command output more"

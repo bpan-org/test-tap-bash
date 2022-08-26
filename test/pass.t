@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-source test/setup
+source test/init
 
-use Test::More tests 3
+plan 3
 
 pass 'pass 1 - with label'
 pass

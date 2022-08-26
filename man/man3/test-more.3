@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "STDIN 1"
-.TH "test-more" 3 "2022-08-22" "md2man v0.1.0" "Bash Package Manager"
+.TH "test-more" 3 "2022-08-26" "md2man v0.1.0" "Bash Package Manager"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -152,7 +152,7 @@ Write a test file like this. Maybe call it \f(CW\*(C`test/test.t\*(C'\fR:
 \&
 \&    bpan:use test\-more
 \&
-\&    plan tests 8
+\&    plan 8
 \&
 \&    some\-command
 \&    ok $? \*(Aqsome\-command is ok\*(Aq
@@ -195,7 +195,7 @@ Test::More is the tried and true testing library for Perl. It uses \s-1TAP\s0 (t
 .IX Subsection "METHODS"
 This is the basic usage:
 .IP "\(bu" 4
-\&\f(CW\*(C`plan tests $count\*(C'\fR
+\&\f(CW\*(C`plan $count\*(C'\fR
 .IP "\(bu" 4
 \&\f(CW\*(C`ok $status_code "$label"\*(C'\fR
 .IP "\(bu" 4
