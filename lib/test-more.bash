@@ -133,6 +133,30 @@ ok() {
   fi
 }
 
+ok-d() {
+  local dir=${1:?}
+  local msg=${2:-"'${dir#*//}' is a directory"}
+  ok "$([[ -d $dir ]])" "$msg"
+}
+
+ok-f() {
+  local file=${1:?}
+  local msg=${2:-"'${file#*//}' is a file"}
+  ok "$([[ -f $file ]])" "$msg"
+}
+
+ok-l() {
+  local link=${1:?}
+  local msg=${2:-"'${link#*//}' is a symlink"}
+  ok "$([[ -h $link ]])" "$msg"
+}
+
+ok-not-e() {
+  local path=${1:?}
+  local msg=${2:-"'${path#*//}' does not exist"}
+  ok "$([[ ! -e $path ]])" "$msg"
+}
+
 like() {
   local got=$1 regex=$2 label=${3-}
   if [[ $got =~ $regex ]]; then
