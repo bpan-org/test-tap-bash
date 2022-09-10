@@ -28,5 +28,4 @@ like "$output" "line1. *-line2." \
 like "$output" "-line2.*\+foo" \
   'array comparison (diff)'
 
-
 done-testing 11

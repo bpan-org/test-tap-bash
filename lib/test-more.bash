@@ -2,16 +2,9 @@
 #
 # Copyright (c) 2013-2022. Ingy döt Net.
 
-: "${BPAN_VERSION:?}"
-
-bpan:use prelude
-
-check-command-version bash 3.2 ||
-  die "test-more-bash requires bash 3.2+"
-
 test-more:main() {
   [[ ${BASH_SOURCE[0]} ]] ||
-    die "Error: test-more-bash must be run under Bash only"
+    test-more:die "Error: test-more-bash must be run under Bash only"
   _test_more__plan=0
   _test_more__run=0
   _test_more__failed=0
@@ -19,11 +12,54 @@ test-more:main() {
 
   if [[ $# -gt 0 ]]; then
     [[ $# -eq 2 ]] ||
-      die 'Usage: source test-more.bash tests <number>'
+      test-more:die 'Usage: source test-more.bash tests <number>'
     plan "$@"
   fi
 
   trap test-more:END EXIT
+}
+
+test-more:label() (
+  label=$1
+  G=${got-}
+  W=${want-}
+  G=${G:0:40}
+  W=${W:0:40}
+  G=${G//$'\n'/␤}
+  W=${W//$'\n'/␤}
+
+  label=${label//\%G/$G}
+  label=${label//\%W/$W}
+
+  echo "$label"
+)
+
+try() {
+  cmd="$*"
+  set --
+  set +e
+  got=$(eval "$cmd" 2>&1)
+  rc=$?
+  set -e
+}
+
+has() {
+  local got=$1
+  local want=$2
+  local label
+  label=$(test-more:label "$3")
+
+  if [[ $got == *"$want"* ]]; then
+    pass "$label"
+  else
+    fail "$label"
+    if [[ $got == *"$n"* ]]; then
+      got="'$n$got$n'"
+    else
+      got="'$got'"
+    fi
+    diag "Text '$want' not found in: $got"
+  fi
 }
 
 plan() {
@@ -39,25 +75,19 @@ plan() {
 
   if [[ $# -eq 1 ]]; then
     [[ $1 =~ ^-?[0-9]+$ ]] ||
-      die 'Plan must be a number'
+      test-more:die 'Plan must be a number'
     [[ $1 -gt 0 ]] ||
-      die 'Plan must greater then 0'
+      test-more:die 'Plan must be greater then 0'
     _test_more__plan=$1
     printf "1..%d\n" "$_test_more__plan"
   else
-    die 'Usage: plan <number>'
+    test-more:die 'Usage: plan <number>'
   fi
 }
 
 pass() {
   test-more:_check-pid
-  ((++_test_more__run))
-  local label=${1-}
-  if [[ $label ]]; then
-    echo "ok $_test_more__run - $label"
-  else
-    echo "ok $_test_more__run"
-  fi
+  echo "ok $((++_test_more__run))${1:+" - $1"}"
 }
 
 _test_more__CALL_STACK_LEVEL=1
@@ -68,11 +98,7 @@ fail() {
   local file=${c[2]-}
   local line=${c[0]-}
   local label=${1-} callback=${2-}
-  if [[ $label ]]; then
-    echo "not ok $_test_more__run - $label"
-  else
-    echo "not ok $_test_more__run"
-  fi
+  echo "not ok $_test_more__run${label:+" - $label"}"
   label=${label:+"'$label'\n#   at $file line $line."}
   label=${label:-"at $file line $line."}
   echo -e "#   Failed test $label" >&2
@@ -84,7 +110,8 @@ fail() {
 }
 
 is() {
-  local got=$1 want=$2 label=${3-}
+  local got=$1 want=$2 label
+  label=$(test-more:label "$3")
   if [[ $got == "$want" ]]; then
     pass "$label"
   else
@@ -270,8 +297,12 @@ test-more:END() {
 
 test-more:_check-pid() {
   if [[ ${BASHPID:-0} -ne ${_test_more__pid:-0} ]]; then
-    die "Error: Called test-more method from a subprocess" 3
+    test-more:die "Error: Called test-more method from a subprocess" 3
   fi
+}
+
+test-more:die() {
+  echo "$1" >&2
 }
 
 test-more:main "$@"

@@ -5,7 +5,8 @@ TAP Testing for Bash
 
 ## Synopsis
 
-Write a test file like this. Maybe call it `test/test.t`:
+Write a test file like this.
+Maybe call it `test/test.t`:
 ```
 #!/usr/bin/env bash
 
@@ -13,7 +14,7 @@ source bpan.bash --prelude
 
 bpan:use test-more
 
-plan 8
+plan 10
 
 some-command
 ok $? 'some-command is ok'
@@ -40,6 +41,12 @@ note "A message for stdout"
 output=( $(ls) )
 expected=(README lib bin)
 cmp-array output expected "list files"
+
+try ls /not/a/file
+has "$out" "No such file" \
+  "Output has substring '%W'"
+isnt "$rc" 0 \
+  "'$cmd' return code is not 0"
 ```
 
 Run the test with `prove` like this:
@@ -73,7 +80,9 @@ This is the basic usage:
 * `done_testing $count`
 * `plan skip_all "$reason"`
 * `BAIL_OUT "$reason"`
-* `cmp-array output expected "message"
+* `cmp-array output expected "message"`
+* `try some command --with=options`
+* `has "$out" "some substring" "$label"`
 
 More detailed info coming soon.
 
