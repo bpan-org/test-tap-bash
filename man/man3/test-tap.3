@@ -133,13 +133,13 @@
 .\" ========================================================================
 .\"
 .IX Title "STDIN 1"
-.TH "test-more" 3 "2022-08-26" "md2man v0.1.0" "Bash Package Manager"
+.TH "test-tap" 3 "2022-09-10" "md2man v0.1.0" "Bash Package Manager"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
 .nh
-.SH "TEST-MORE-BASH"
-.IX Header "TEST-MORE-BASH"
+.SH "TEST-TAP-BASH"
+.IX Header "TEST-TAP-BASH"
 \&\s-1TAP\s0 Testing for Bash
 .SS "\s-1SYNOPSIS\s0"
 .IX Subsection "SYNOPSIS"
@@ -150,9 +150,9 @@ Write a test file like this. Maybe call it \f(CW\*(C`test/test.t\*(C'\fR:
 \&
 \&    source bpan.bash \-\-prelude
 \&
-\&    bpan:use test\-more
+\&    bpan:use test\-tap
 \&
-\&    plan 8
+\&    plan 10
 \&
 \&    some\-command
 \&    ok $? \*(Aqsome\-command is ok\*(Aq
@@ -179,6 +179,12 @@ Write a test file like this. Maybe call it \f(CW\*(C`test/test.t\*(C'\fR:
 \&    output=( $(ls) )
 \&    expected=(README lib bin)
 \&    cmp\-array output expected "list files"
+\&
+\&    try ls /not/a/file
+\&    has "$out" "No such file" \e
+\&      "Output has substring \*(Aq%W\*(Aq"
+\&    isnt "$rc" 0 \e
+\&      "\*(Aq$cmd\*(Aq return code is not 0"
 .Ve
 .PP
 Run the test with \f(CW\*(C`prove\*(C'\fR like this:
@@ -190,7 +196,7 @@ Run the test with \f(CW\*(C`prove\*(C'\fR like this:
 Prove knows it's Bash from the first line (the hashbang), and it just works.
 .SS "\s-1DESCRIPTION\s0"
 .IX Subsection "DESCRIPTION"
-Test::More is the tried and true testing library for Perl. It uses \s-1TAP\s0 (the Test Anything Protocol). This is the same thing for Bash. For the most part it should work exactly the same.
+Test::More <https://metacpan.org/pod/Test::More> is the tried and true testing library for Perl. It uses \s-1TAP\s0 (the Test Anything Protocol). This is the same thing for Bash. For the most part it should work exactly the same.
 .SS "\s-1METHODS\s0"
 .IX Subsection "METHODS"
 This is the basic usage:
@@ -221,7 +227,11 @@ This is the basic usage:
 .IP "\(bu" 4
 \&\f(CW\*(C`BAIL_OUT "$reason"\*(C'\fR
 .IP "\(bu" 4
-`cmp\-array output expected \*(L"message\*(R"
+\&\f(CW\*(C`cmp\-array output expected "message"\*(C'\fR
+.IP "\(bu" 4
+\&\f(CW\*(C`try some command \-\-with=options\*(C'\fR
+.IP "\(bu" 4
+\&\f(CW\*(C`has "$out" "some substring" "$label"\*(C'\fR
 .PP
 More detailed info coming soon.
 .SS "\s-1AUTHOR\s0"

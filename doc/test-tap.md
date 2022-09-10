@@ -1,4 +1,4 @@
-test-more-bash
+test-tap-bash
 ==============
 
 TAP Testing for Bash
@@ -12,7 +12,7 @@ Maybe call it `test/test.t`:
 
 source bpan.bash --prelude
 
-bpan:use test-more
+bpan:use test-tap
 
 plan 10
 
@@ -58,7 +58,8 @@ Prove knows it's Bash from the first line (the hashbang), and it just works.
 
 ## Description
 
-Test::More is the tried and true testing library for Perl.
+[Test::More](https://metacpan.org/pod/Test::More) is the tried and true testing
+library for Perl.
 It uses TAP (the Test Anything Protocol).
 This is the same thing for Bash.
 For the most part it should work exactly the same.
