@@ -1,12 +1,16 @@
+[version "0.1.3"]
+date = Sat Sep 10 02:20:52 PM EDT 2022
+done = Add `try` and `has`
+
 [version "0.1.2"]
-  date = Sun 28 Aug 2022 02:08:32 PM PDT
-  done = Add file testing functions
+date = Sun 28 Aug 2022 02:08:32 PM PDT
+done = Add file testing functions
 
 [version "0.1.1"]
-  date = Fri 26 Aug 2022 08:14:15 AM PDT
-  done = Get tests to all pass
-  done = Refactor out old test-tap code
+date = Fri 26 Aug 2022 08:14:15 AM PDT
+done = Get tests to all pass
+done = Refactor out old test-tap code
 
 [version "0.1.0"]
-  date = Fri 12 Aug 2022 03:51:21 PM PDT
-  done = Initial release
+date = Fri 12 Aug 2022 03:51:21 PM PDT
+done = Initial release
