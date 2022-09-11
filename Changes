@@ -1,3 +1,7 @@
+[version "0.1.5"]
+date = Sun Sep 11 12:34:49 PM EDT 2022
+done = Fix bpan path because bpan changed it
+
 [version "0.1.4"]
 date = Sun Sep 11 11:25:37 AM EDT 2022
 done = Rename from test-more-bash to test-tap-bash
