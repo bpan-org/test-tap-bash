@@ -11,7 +11,7 @@ ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)
   exit 1
 }
 
-source "$BPAN_ROOT/.bpan/lib/bpan.bash" --
+source "$BPAN_ROOT/lib/bpan.bash" --
 
 # Moke sure local copy is used:
 export PATH=$ROOT/lib:$PATH
