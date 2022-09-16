@@ -1,19 +1,16 @@
-#!/usr/bin/env bash
+#!/bash
 
-ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)
-
-[[ ${BPAN_ROOT:-} ]] || {
+[[ ${BPAN_ROOT-} ]] || {
   (
-    echo
-    echo "Testing requires BPAN to be installed."
-    echo "https://github.com/bpan-org/bpan#installation"
+    echo "Tests require BPAN to be installed."
+    echo "See https://github.com/bpan-org/bpan"
   ) >&2
   exit 1
 }
 
-source "$BPAN_ROOT/lib/bpan.bash" --prelude
+source "$BPAN_ROOT/lib/bpan.bash" --
 
-# Moke sure local copy is used:
-export PATH=$ROOT/lib:$PATH
+export PATH=$PWD/lib:$PATH
 
-bpan:use test-tap
+bpan:source bashplus --
+bpan:source test-tap
