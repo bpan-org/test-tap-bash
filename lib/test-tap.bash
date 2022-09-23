@@ -131,8 +131,8 @@ fail() {
 }
 
 is() {
-  local got=$1 want=$2 label
-  label=$(test-tap:label "$3")
+  local got=$1 want=$2 label=${3-}
+  label=$(test-tap:label "$label")
   if [[ $got == "$want" ]]; then
     pass "$label"
   else
@@ -160,6 +160,7 @@ isnt() {
   local _test_tap__CALL_STACK_LEVEL=
   _test_tap__CALL_STACK_LEVEL=$(( _test_tap__CALL_STACK_LEVEL + 1 ))
   local got=$1 dontwant=$2 label=${3-}
+  label=$(test-tap:label "$label")
   if [[ $got != "$dontwant" ]]; then
     pass "$label"
   else
