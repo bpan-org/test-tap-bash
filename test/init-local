@@ -1,0 +1,5 @@
+#!/bash
+
+export PATH=$PWD/lib:$PATH
+source test-tap.bash
+
