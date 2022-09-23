@@ -1,26 +1,36 @@
 [bpan]
+api-version = 1
+
+[package]
 name = test-tap-bash
 version = 0.1.6
-abstract = TAP Testing for Bash
+title = TAP Testing for Bash
 license = MIT
 copyright = 2013-2022
 
-site = $repo
-repo = git@github.com:bpan-org/test-tap-bash
-bug = $repo/issues/
+repo = https://github.com/bpan-org/test-tap-bash
+site = $package.repo
+bug = $package.repo/issues/
 irc = irc.libera.chat/bpan
 
 [author]
 name = Ingy döt Net
 email = ingy@ingy.net
 github = ingydotnet
-libera = ingy
 twitter = ingydotnet
-site = https://github.com/ingydotnet
+irc = ingy@irc.libera.chat
+matrix = @ingy:yaml.io
+site = http://ingy.net
 
-[file "bpan"]
-update = License
-update = Makefile
-update = test/00-shellcheck.t
-update = test/init
+[owner]
+github = ingydotnet
 
+[update]
+template = License
+template = Makefile
+template = ReadMe.md doc/test-tap.md
+template = test/00-shellcheck.t
+template = test/init
+manpage = doc/test-tap.md
+
+# vim: ft=gitconfig:
