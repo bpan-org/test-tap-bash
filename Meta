@@ -3,7 +3,7 @@ api-version = 1
 
 [package]
 name = test-tap-bash
-version = 0.1.10
+version = 0.1.11
 title = TAP Testing for Bash
 license = MIT
 copyright = 2013-2022
