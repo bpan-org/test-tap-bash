@@ -22,4 +22,4 @@ note "A msg for stdout"
 expected=(line1 line2)
 
 command_output=(line1 line2)
-cmp-array command_output expected "command output more"
+array:is command_output expected "command output more"
