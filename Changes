@@ -1,3 +1,7 @@
+[version "0.1.16"]
+date = Thu Nov 17 10:27:59 PM PST 2022
+done = Update config to new format
+
 [version "0.1.15"]
 date = Fri Nov 11 06:44:55 AM PST 2022
 done = Avoid unnecessary subshell functions
