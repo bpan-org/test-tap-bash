@@ -1,3 +1,7 @@
+[version "0.1.17"]
+date = Sat Nov 26 02:22:09 PM PST 2022
+done = Add test for testing in subprocess
+
 [version "0.1.16"]
 date = Thu Nov 17 10:27:59 PM PST 2022
 done = Update config to new format
