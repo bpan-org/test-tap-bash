@@ -1,9 +1,9 @@
 [bpan]
-version = 0.1.84
+version = 0.1.91
 
 [package]
 name = test-tap-bash
-version = 0.1.17
+version = 0.1.18
 title = TAP Testing for Bash
 license = MIT
 copyright = 2013-2022
