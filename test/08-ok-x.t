@@ -3,10 +3,9 @@
 source test/init
 
 ok-d test
-ok-e Meta
+ok-e .bpan/config
 ok-not-e Umbrella
 ok-f ReadMe.md
-ok-h .bpan/config
 ok-s Changes
 
 f=$(mktemp)
