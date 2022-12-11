@@ -1,5 +1,6 @@
 [bpan]
-version = 0.1.91
+version = 0.1.96
+updated = 2022-12-11-18-47-30
 
 [package]
 name = test-tap-bash
@@ -9,24 +10,14 @@ license = MIT
 copyright = 2013-2022
 tag = bash tap test
 
-owner = bpan-org
-source = https://github.com/$package.owner/$package.name
-branch = main
-
-site = $package.source
-bug = $package.source/issues/
+bug = https://github.com/bpan-org/test-tap-bash/issues/
 irc = irc.libera.chat/bpan
 
-[author "ingydotnet"]
+[author "github:ingydotnet"]
 name = Ingy döt Net
 email = ingy@ingy.net
-host = github
-user = ingydotnet
-
-twitter = ingydotnet
 irc = ingy@irc.libera.chat
 matrix = @ingy:yaml.io
-site = http://ingy.net
 
 [update]
 file = License
