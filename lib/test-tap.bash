@@ -162,12 +162,23 @@ bail-on-fail() {
 }
 
 try() {
+  local keep=''
+  if [[ $1 =~ ^--keep=(.*) ]]; then
+    keep=${BASH_REMATCH[1]}
+    shift
+  fi
+
   cmd="$*"
   set --
   set +e
   got=$(eval "$cmd" 2>&1)
   rc=$?
   set -e
+
+  if [[ $keep ]]; then
+    eval "$(grep "^$keep=" <<<"$got" || true)"
+    got=$(grep -v "^$keep=" <<<"$got" || true)
+  fi
 }
 
 pass() {
