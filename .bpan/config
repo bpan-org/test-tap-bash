@@ -3,14 +3,13 @@ version = 0.1.100
 updated = 2022-12-15T19:32:04Z
 
 [package]
-name = test-tap-bash
+id = github:bpan-org/test-tap-bash
 version = 0.1.21
 title = TAP Testing for Bash
 license = MIT
-copyright = 2013-2022
-type = bash-lib
+copyright = 2013-2023
+type = bash:lib
 
-bug = https://github.com/bpan-org/test-tap-bash/issues/
 irc = irc.libera.chat/bpan
 
 [author "github:ingydotnet"]
